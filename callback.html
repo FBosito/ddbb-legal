@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDBB Stats Agent – Authorization</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #0a0a0f; color: #e8e8e8; }
+        .container { text-align: center; max-width: 400px; padding: 40px; }
+        h1 { font-size: 20px; margin-bottom: 12px; }
+        .code { background: #12121a; border: 1px solid #1e1e2e; border-radius: 8px; padding: 16px; margin: 20px 0; font-family: monospace; font-size: 14px; word-break: break-all; color: #00ff88; }
+        p { color: #888; font-size: 14px; line-height: 1.6; }
+    </style>
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            const el = document.getElementById('auth-code');
+            if (code) {
+                el.textContent = code;
+                document.getElementById('success').style.display = 'block';
+                document.getElementById('error').style.display = 'none';
+            } else {
+                document.getElementById('success').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ DDBB Stats Agent</h1>
+        <div id="success" style="display:none;">
+            <p>TikTok Autorisierung erfolgreich! Kopiere diesen Code in den Stats Agent:</p>
+            <div class="code" id="auth-code"></div>
+            <p>Du kannst dieses Fenster danach schließen.</p>
+        </div>
+        <div id="error">
+            <p>Warte auf Autorisierung oder es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>
+        </div>
+    </div>
+</body>
+</html>
